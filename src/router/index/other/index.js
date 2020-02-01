@@ -29,7 +29,7 @@ const otherMainRouters = [
         // PricePanelHook页面
         path:'/price-panel-hook',
         component:Loadable({
-            loader:() => import('@/page/index/pages/PricePanelHook'),
+            loader:() => import('@/page/index/pages/price-panel-hook'),
             loading:() => ('')
         }),
         title: 'price-panel-hook页面'

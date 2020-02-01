@@ -7,26 +7,25 @@ import { Loading, Content } from '@/component/index'
 
 
 class List extends React.Component {
-    // constructor(props) {
-    //     super(props);
-      
-    // }
-    state = { 
-        lang: localStorage.getItem('lang_type') || 'en-US',
-        SUPPOER_LOCALES: [
-            {
-              name: 'English',
-              value: 'en-US'
-            },
-            {
-              name: '简体中文',
-              value: 'zh-CN'
-            },
-            {
-              name: '文言文',
-              value: 'cl-CN'
-            }
-          ] 
+    constructor(props) {
+        super(props);
+        this.state = { 
+            lang: localStorage.getItem('lang_type') || 'en-US',
+            SUPPOER_LOCALES: [
+                {
+                  name: 'English',
+                  value: 'en-US'
+                },
+                {
+                  name: '简体中文',
+                  value: 'zh-CN'
+                },
+                {
+                  name: '文言文',
+                  value: 'cl-CN'
+                }
+              ] 
+        }
     }
 
     componentDidMount() {
@@ -37,7 +36,7 @@ class List extends React.Component {
         return this.ctx.dispatch('init');
     }
 
-    $$setup(ctx){
+    $$setup(ctx) {
         console.log(ctx, 'CTX')
       }
 
@@ -66,7 +65,7 @@ class List extends React.Component {
             lang, SUPPOER_LOCALES
         } = this.state
   
-        console.log('%c@@@ PricePanelClass', 'color:blue;border:1px solid blue');
+        console.log('%c@@@ List-render', 'color:blue;border:1px solid blue');
         return(
             <div className='app-container'>
                 <Content 
