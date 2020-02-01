@@ -35,6 +35,15 @@ const otherMainRouters = [
         title: 'hooks-1页面'
     },
     {
+        // PricePanelHook页面
+        path:'/price-panel-hook',
+        component:Loadable({
+            loader:() => import('@/page/index/pages/PricePanelHook'),
+            loading:() => ('')
+        }),
+        title: 'hooks-1页面'
+    },
+    {
         // 多语言测试页面
         path:'/multi-language',
         component:Loadable({

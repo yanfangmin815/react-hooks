@@ -4,7 +4,7 @@ import * as logic from '@/assets/utils/logic';
 import './hooks.css'
 
 const setup = ctx => {
-    // console.log(reducer, 'reducer-reducer')
+    console.log(reducer, 'reducer-reducer')
     /*ctx.watch("keyword", () => {
         console.log('keyword changed...')
     });*/
@@ -42,8 +42,8 @@ const setup = ctx => {
         fetchProducts,
         //推荐使用此方式，把方法定义在settings里，下面示例故意直接使用sync语法糖函数
         // changeType: ctx.sync('type'),
-        updateType: e => reducer.product.complexUpdate(e.currentTarget.value),
-        clickTitle: e=> ctx.invoke(logic.complexUpdateTitle, e.currentTarget.innerHTML),
+        updateType: e => ctx.invoke(logic.complexUpdate,e.currentTarget.value),
+        clickTitle: e => ctx.invoke(logic.complexUpdateTitle, e.currentTarget.innerHTML),
         /*updateTypeAndTitle: e=> {
             // 为了配合这个演示，我们另开两个key存type，sex^_^
             const {tmpType, tmpSex} = ctx.state;
@@ -65,7 +65,7 @@ const ConcentFnPage = React.memo(function({ tag: propTag }) {
     return (
         <div className="conditionArea">
             <h1 onClick={clickTitle}>concent setup compnent</h1>
-            <select value={type} onChange={updateType}>
+            <select value={type} onChange={sync('type')}>
                 <option value="1">1</option>
                 <option value="2">2</option>
             </select>

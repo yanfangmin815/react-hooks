@@ -7,6 +7,9 @@ import enUS from '@/locales/en-US.json'
 import zhCN from '@/locales/zh-CN.json'
 import clCN from '@/locales/cl-CN.json'
 
+// 全局数据引入
+import '@/assets/utils/runConcent';
+
 import * as logic from '@/assets/utils/logic';
 
 import {
@@ -44,21 +47,21 @@ class App extends React.Component {
       lang: localStorage.getItem('lang_type') || 'zh-CN' 
     }
     //定义状态构造函数，传递给useConcent
-    const iState = () => ({
-        products:[],
-        type: "",
-        sex: "",
-        addr: "",
-        keyword: "",
-        tag: "" ,
-        title: ''});
-    run({
-        product:{
-            //这里复用刚才的状态生成函数
-            state: iState(),
-            reducer: logic
-        }
-    })
+    // const iState = () => ({
+    //     products:[],
+    //     type: "",
+    //     sex: "",
+    //     addr: "",
+    //     keyword: "",
+    //     tag: "" ,
+    //     title: ''});
+    // run({
+    //     product:{
+    //         //这里复用刚才的状态生成函数
+    //         state: iState(),
+    //         reducer: logic
+    //     }
+    // })
   }
 
   componentDidMount () {
