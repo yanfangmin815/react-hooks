@@ -5,13 +5,10 @@ import App from './App.jsx';
 // import registerServiceWorker from './registerServiceWorker';
 
 // 初始化域名为axios对象
-import domains from '@/assets/invoker/invoker'
+import '@/assets/invoker/invoker'
 import '@/style/public.css'
-
-// 绑定在React全局
-React.$domains = domains
-
-// moment.locale('zh-cn');
+// 全局数据引入
+import '@/assets/utils/runConcent';
 
 ReactDOM.render(
     (

@@ -1,3 +1,4 @@
+import React from 'react';
 import axios from 'axios'
 import { config } from '../env.js'
 import intercepter from '../interceptor/interceptor'
@@ -5,6 +6,9 @@ import intercepter from '../interceptor/interceptor'
 // 初始化所有域名为axios对象
 let domains = getDomains(config)
 // console.log(domains, 'domains')
+
+// 绑定React
+React.$domains = domains
 
 function getDomains(conf) {
     let result = {};

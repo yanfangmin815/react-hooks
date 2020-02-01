@@ -1,14 +1,9 @@
 import React, {Component, PropTypes} from 'react'
 import {hot} from 'react-hot-loader'
-import {connect} from 'react-redux'
-import { run, useConcent } from 'concent'
 import intl from 'react-intl-universal'
 import enUS from '@/locales/en-US.json'
 import zhCN from '@/locales/zh-CN.json'
 import clCN from '@/locales/cl-CN.json'
-
-// 全局数据引入
-import '@/assets/utils/runConcent';
 
 import {
   BrowserRouter as Router,
