@@ -25,15 +25,6 @@ const otherMainRouters = [
     //     }),
     //     title: 'hooks页面'
     // },
-    // {
-    //     // hooks页面
-    //     path:'/other-hooks-1',
-    //     component:Loadable({
-    //         loader:() => import('@/page/index/pages/sub-main/hooks-1.jsx'),
-    //         loading:() => ('')
-    //     }),
-    //     title: 'hooks-1页面'
-    // },
     {
         // PricePanelHook页面
         path:'/price-panel-hook',

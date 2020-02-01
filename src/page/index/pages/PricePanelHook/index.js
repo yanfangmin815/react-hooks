@@ -60,8 +60,7 @@ const setup = ctx => {
     ctx.dispatch('modifyTradePrice', ctx.state._tradePrice);
   };
 
-  return { init, handleInputExitPriceChange, handleInputTradePriceChange, 
-    modifyExitPrice, modifyTradePrice };
+  return { init, handleInputExitPriceChange, handleInputTradePriceChange, modifyExitPrice, modifyTradePrice };
 }
 
 const locaState = { _exitPrice: 0, _tradePrice: 0, loading: false };
@@ -89,7 +88,7 @@ const UI = (props) => {
   console.log('%c@@@ PricePanelDumb', 'color:blue;border:1px solid blue', loading);
   return (
     <Card loading={loading} title={<span><Tag color="cyan">hook函数组件</Tag>,
-    使用useConcent构建</span>}>
+    -- 使用useConcent构建</span>}>
       <Alert message={exitPriceMsg} type="error" />
       <div>exitPrice: {exitPrice}
         <br />
