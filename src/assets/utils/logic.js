@@ -1,5 +1,6 @@
 export async function complexUpdate(type, moduleState, actionCtx){
     // await api.updateType(type);
+    console.log('coming into...')
     type = type * 200;
     return { type };
 }
