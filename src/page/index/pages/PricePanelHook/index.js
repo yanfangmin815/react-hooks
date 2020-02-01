@@ -16,14 +16,16 @@ const setup = ctx => {
    *  参数3 表示时候在组件初次挂载完毕是就立即执行，默认是true
    */
   ctx.effect(ctx=>{
-    alert('_exitPrice or _tradePrice value changed');
+    console.log('_exitPrice or _tradePrice value changed')
   }, ['_exitPrice', '_tradePrice'], false);
 
-  /** 对key定义watch函数，当key的值发生变化，触发此函数，执行时机是在组件渲染之前 */
+  /** 
+   * 可以参考vue-watch使用
+   * 对key定义watch函数，当key的值发生变化，触发此函数，执行时机是在组件渲染之前 */
   ctx.watch({
     '_exitPrice'(newVal, oldVal){
       if(newVal==='888'){
-        alert('user input 888');
+        console.log('user input 888')
         /** 清除掉id为effect_1的副作用函数定义 */
         ctx.removeEffect('effect_1');
       }
@@ -50,6 +52,7 @@ const setup = ctx => {
   };
 
   const modifyExitPrice = () => {
+    console.log('%c@@@ modifyExitPrice', 'color:red;border:1px solid blue', )
     ctx.dispatch('modifyExitPrice', ctx.state._exitPrice);
   };
 
@@ -57,13 +60,14 @@ const setup = ctx => {
     ctx.dispatch('modifyTradePrice', ctx.state._tradePrice);
   };
 
-  return { init, handleInputExitPriceChange, handleInputTradePriceChange, modifyExitPrice, modifyTradePrice };
+  return { init, handleInputExitPriceChange, handleInputTradePriceChange, 
+    modifyExitPrice, modifyTradePrice };
 }
 
 const locaState = { _exitPrice: 0, _tradePrice: 0, loading: false };
 
 const mapProps = ctx => {
-  const settings = ctx.settings;//由setup返回
+  const settings = ctx.settings; // 由setup返回
   const { _exitPrice, _tradePrice, loading } = ctx.state;//mergedState from local and price module
   const {
     exitPrice, tradePrice, retailPrice, activityPrice,
@@ -77,12 +81,15 @@ const mapProps = ctx => {
 
 const UI = (props) => {
   const {
-    _exitPrice, _tradePrice, loading, exitPrice, tradePrice, retailPrice, activityPrice, exitPriceMsg, tradePriceMsg, handleInputExitPriceChange, handleInputTradePriceChange, modifyExitPrice, modifyTradePrice
+    _exitPrice, _tradePrice, loading, exitPrice, tradePrice, retailPrice, 
+    activityPrice, exitPriceMsg, tradePriceMsg, handleInputExitPriceChange, 
+    handleInputTradePriceChange, modifyExitPrice, modifyTradePrice
   } = props;
 
   console.log('%c@@@ PricePanelDumb', 'color:blue;border:1px solid blue', loading);
   return (
-    <Card loading={loading} title={<span><Tag color="cyan">hook函数组件</Tag>, 基于PricePanelDumb,调整3行代码，使用useConcent构建</span>}>
+    <Card loading={loading} title={<span><Tag color="cyan">hook函数组件</Tag>,
+    使用useConcent构建</span>}>
       <Alert message={exitPriceMsg} type="error" />
       <div>exitPrice: {exitPrice}
         <br />
@@ -108,7 +115,13 @@ export default registerDumb({ ccKey:'ooxx', setup, mapProps, module: 'price', st
  */
 const localState = {_tradePrice:0, _exitPrice:0};
 export default function PricePanelHook(){
-  const {mapped} = useConcent({ ccKey:'ooxx', setup, mapProps, module: 'price', state: localState });
+  const { mapped } = useConcent({ 
+      ccKey:'ooxx', 
+      setup, 
+      mapProps, 
+      module: 'price', 
+      state: localState 
+    });
   return <UI {...mapped}/>
 }
 

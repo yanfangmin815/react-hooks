@@ -37,6 +37,7 @@ export async function refreshPrice() {
 }
 
 export async function handleInputExitPriceChange(_exitPrice) {
+  console.log('%c@@@ _exitPrice', 'color:red;border:1px solid blue', _exitPrice)
   let exitPriceMsg = '';
   if (_exitPrice > 100) {
     if (_exitPrice < 200) exitPriceMsg = '注意，出厂价太高了';
@@ -56,7 +57,10 @@ export async function handleInputTradePriceChange(_tradePrice) {
 
 
 export async function modifyExitPrice(exitPrice, moduleState, ctx){
-  const payload = { modKey:'exitPrice', oldVal:moduleState.exitPrice, newVal:exitPrice };
+  const payload = { 
+    modKey:'exitPrice', 
+    oldVal:moduleState.exitPrice, 
+    newVal:exitPrice };
   await ctx.dispatch(_setLoading, true);
   await delay();
   ctx.dispatch(_recordLog, payload);

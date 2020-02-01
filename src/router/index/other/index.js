@@ -16,24 +16,24 @@ const otherMainRouters = [
         }),
         title: '其他页面'
     },
-    {
-        // hooks页面
-        path:'/other-hooks',
-        component:Loadable({
-            loader:() => import('@/page/index/pages/sub-main/hooks.jsx'),
-            loading:() => ('')
-        }),
-        title: 'hooks页面'
-    },
-    {
-        // hooks页面
-        path:'/other-hooks-1',
-        component:Loadable({
-            loader:() => import('@/page/index/pages/sub-main/hooks-1.jsx'),
-            loading:() => ('')
-        }),
-        title: 'hooks-1页面'
-    },
+    // {
+    //     // hooks页面
+    //     path:'/other-hooks',
+    //     component:Loadable({
+    //         loader:() => import('@/page/index/pages/sub-main/hooks.jsx'),
+    //         loading:() => ('')
+    //     }),
+    //     title: 'hooks页面'
+    // },
+    // {
+    //     // hooks页面
+    //     path:'/other-hooks-1',
+    //     component:Loadable({
+    //         loader:() => import('@/page/index/pages/sub-main/hooks-1.jsx'),
+    //         loading:() => ('')
+    //     }),
+    //     title: 'hooks-1页面'
+    // },
     {
         // PricePanelHook页面
         path:'/price-panel-hook',
@@ -41,7 +41,7 @@ const otherMainRouters = [
             loader:() => import('@/page/index/pages/PricePanelHook'),
             loading:() => ('')
         }),
-        title: 'hooks-1页面'
+        title: 'price-panel-hook页面'
     },
     {
         // 多语言测试页面
