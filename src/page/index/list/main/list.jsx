@@ -28,9 +28,9 @@ class List extends React.Component {
         }
     }
 
-    componentDidMount() {
-        this.init();
-    }
+    // componentDidMount() {
+    //     this.init();
+    // }
 
     init = ()=>{
         return this.ctx.dispatch('init');
@@ -38,6 +38,7 @@ class List extends React.Component {
 
     $$setup(ctx) {
         console.log(ctx, 'CTX')
+        this.init();
       }
 
     componentDidUpdate() {
