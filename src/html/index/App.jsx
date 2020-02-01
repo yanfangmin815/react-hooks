@@ -10,8 +10,6 @@ import clCN from '@/locales/cl-CN.json'
 // 全局数据引入
 import '@/assets/utils/runConcent';
 
-import * as logic from '@/assets/utils/logic';
-
 import {
   BrowserRouter as Router,
   Route,
@@ -46,22 +44,6 @@ class App extends React.Component {
       initDone: false,
       lang: localStorage.getItem('lang_type') || 'zh-CN' 
     }
-    //定义状态构造函数，传递给useConcent
-    // const iState = () => ({
-    //     products:[],
-    //     type: "",
-    //     sex: "",
-    //     addr: "",
-    //     keyword: "",
-    //     tag: "" ,
-    //     title: ''});
-    // run({
-    //     product:{
-    //         //这里复用刚才的状态生成函数
-    //         state: iState(),
-    //         reducer: logic
-    //     }
-    // })
   }
 
   componentDidMount () {
@@ -128,9 +110,4 @@ class App extends React.Component {
   }
 }
 
-const hotApp = hot(module)(App);
-export default connect(
-    state => ({
-      operateAuth: state.operateAuth
-    })
-)(hotApp)
+export default hot(module)(App);

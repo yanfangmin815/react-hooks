@@ -17,7 +17,6 @@ run({
   middlewares:[
     concentWebDevToolMiddleware,
     (ctx, next)=>{
-      console.log(ctx);
       next();
     }
   ]

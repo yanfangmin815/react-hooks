@@ -1,5 +1,5 @@
-/*
-使用axios封装的ajax请求方法
+/** 
+  * 基于axios封装ajax
  */
 
 export default function ajax(request) {

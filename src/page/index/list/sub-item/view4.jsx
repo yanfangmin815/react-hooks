@@ -9,7 +9,7 @@ import {
 }from 'react-router-dom'
 
 import {SubHeader} from '@/component/index'
-import {getMovie} from '@/redux/index/other/actions'
+// import {getMovie} from '@/redux/index/other/actions'
 
 const Page0 = () => {
     return(
@@ -36,8 +36,8 @@ class NoMatch extends React.Component {
 
     componentWillMount() {
         console.log(this.props, 'props')
-        const {getMovie, match} = this.props;
-        getMovie(match.params.id);
+        // const {getMovie, match} = this.props;
+        // getMovie(match.params.id);
     }
 
     render() {
@@ -66,10 +66,4 @@ class NoMatch extends React.Component {
 }
 
 
-export default connect(
-    state => ({
-        movie: state.movie,
-        loading: state.loading
-    }),
-    {getMovie}
-)(NoMatch)
+export default NoMatch;

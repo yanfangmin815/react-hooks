@@ -1,6 +1,6 @@
 const delay = (ms = 1000) => new Promise(resolve => setTimeout(resolve, ms));
 const ranNum = () => parseInt(Math.random() * 19);
-
+console.log('service')
 //支持写完async 或者 generator函数
 
 export default {

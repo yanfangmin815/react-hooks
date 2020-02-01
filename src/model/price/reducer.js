@@ -1,5 +1,10 @@
 
 import api from '@/service/api';
+import {
+  reqMovies,
+  reqSearchMovie,
+  reqMockDataGood
+} from '@/api/index/list'
 
 const delay = (ms = 1000) => new Promise(resolve => setTimeout(resolve, ms));
 
@@ -27,7 +32,8 @@ export function _setLoading(loading){
 
 export async function init(payload, moduleState, ctx){
   await ctx.dispatch(_setLoading, true);
-  await ctx.dispatch(refreshPrice);
+  // await ctx.dispatch(refreshPrice);
+  await ctx.dispatch(reqMockDataGood);
   await ctx.dispatch(_setLoading, false);
 }
 
@@ -37,17 +43,16 @@ export async function refreshPrice() {
 }
 
 export async function handleInputExitPriceChange(_exitPrice) {
-  console.log('%c@@@ _exitPrice', 'color:red;border:1px solid blue', _exitPrice)
-  let exitPriceMsg = '';
+  let exitPriceMsg = ''
   if (_exitPrice > 100) {
-    if (_exitPrice < 200) exitPriceMsg = '注意，出厂价太高了';
-    else exitPriceMsg = '注意，出厂价高得离谱';
+    if (_exitPrice < 200) exitPriceMsg = '注意，出厂价太高了'
+    else exitPriceMsg = '注意，出厂价高得离谱'
   }
-  return { exitPriceMsg, _exitPrice };
+  return { exitPriceMsg, _exitPrice }
 }
 
 export async function handleInputTradePriceChange(_tradePrice) {
-  let tradePriceMsg = '';
+  let tradePriceMsg = ''
   if (_tradePrice > 600) {
     if (_tradePrice < 1000) tradePriceMsg = '注意，批发价太高了';
     else tradePriceMsg = '注意，批发价已经搞过市面所有对手！！！';

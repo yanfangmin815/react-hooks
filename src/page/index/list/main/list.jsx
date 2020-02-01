@@ -1,79 +1,77 @@
 import React, {Component, PropTypes} from 'react';
-import axios from 'axios'
-import {connect} from 'react-redux'
 import {hot} from 'react-hot-loader'
-import intl from 'react-intl-universal';
+import { register } from 'concent';
 import './list.css'
-import {
-    TransitionGroup, CSSTransition
-} from 'react-transition-group'
-import {
-    BrowserRouter as
-    Router,
-    Route,
-    withRouter,
-    Link,
-    Switch,
-    Prompt,
-}from 'react-router-dom'
 
-import { getMockDataGood, changeGood, changeLoading } from '@/redux/index/list/actions'
 import { Loading, Content } from '@/component/index'
 
 
 class List extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = { 
-            lang: localStorage.getItem('lang_type') || 'en-US',
-            SUPPOER_LOCALES: [
-                {
-                  name: 'English',
-                  value: 'en-US'
-                },
-                {
-                  name: '简体中文',
-                  value: 'zh-CN'
-                },
-                {
-                    name: '文言文',
-                    value: 'cl-CN'
-                  }
-              ] 
-        }
+    // constructor(props) {
+    //     super(props);
+      
+    // }
+    state = { 
+        lang: localStorage.getItem('lang_type') || 'en-US',
+        SUPPOER_LOCALES: [
+            {
+              name: 'English',
+              value: 'en-US'
+            },
+            {
+              name: '简体中文',
+              value: 'zh-CN'
+            },
+            {
+              name: '文言文',
+              value: 'cl-CN'
+            }
+          ] 
     }
 
-    componentWillMount() {
-        const { getMockDataGood } = this.props;
-        getMockDataGood()
+    componentDidMount() {
+        this.init();
     }
+
+    init = ()=>{
+        return this.ctx.dispatch('init');
+    }
+
+    $$setup(ctx){
+        console.log(ctx, 'CTX')
+      }
 
     componentDidUpdate() {
         // console.log('list updated.....')
     }
 
-    pushGoods = () => {
-        const { changeGood } = this.props;
-        changeGood('this is pushed str...')
-    }
+    pushGoods = () => {}
 
-    changeLoadings = () => {
-        const { changeLoading } = this.props;
-        changeLoading();
-    }
+    changeLoadings = () => {}
 
     onSelectLocale = ev => {
         localStorage.setItem('lang_type', ev.target.value);
         window.location.reload();
-      };
+    };
 
     render() {
-        const { goods, loading } = this.props
+        /** 
+         * state由模块的state和用户自己扩展的私有state合并而来 
+         * */
+        const {
+            // price模块 
+            exitPriceMsg, tradePriceMsg, exitPrice, tradePrice, 
+            retailPrice, activityPrice,
+            // 自定义属性
+            lang, SUPPOER_LOCALES
+        } = this.state
+  
+        console.log('%c@@@ PricePanelClass', 'color:blue;border:1px solid blue');
         return(
             <div className='app-container'>
                 <Content 
-                    lang = {this.state.lang}
-                    SUPPOER_LOCALES = {this.state.SUPPOER_LOCALES}
+                    lang = {lang}
+                    SUPPOER_LOCALES = {SUPPOER_LOCALES}
                     onSelectLocale = {this.onSelectLocale}/>
                 {/* <div onClick={this.pushGoods}>改变goods</div>
                 <div onClicks={this.changeLoadings}>改变loading</div> */}
@@ -89,13 +87,6 @@ class List extends React.Component {
 }
 
 
-const Lists = hot(module)(List);
-export default connect(
-    state => ({
-        goods: state.goods,
-        loading: state.loading
-    }),
-    {   getMockDataGood, 
-        changeGood, 
-        changeLoading }
-)(Lists)
+// const Lists = hot(module)(List);
+// export default hot(module)(List);
+export default register('price')(List);

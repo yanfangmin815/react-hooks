@@ -33,9 +33,5 @@ class App extends React.Component {
     }
 }
 
-const hotApp = hot(module)(App);
-export default connect(
-    state => ({
-        operateAuth: state.operateAuth
-    })
-)(hotApp)
+// const hotApp = hot(module)(App);
+export default hot(module)(App);
