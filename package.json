@@ -86,7 +86,7 @@
     "whatwg-fetch": "2.0.3"
   },
   "homepage": ".",
-  "proxy": "http://localhost:3001",
+  "proxy": "",
   "devDependencies": {
     "axios": ">=0.18.1",
     "friendly-errors-webpack-plugin": "^1.7.0",
