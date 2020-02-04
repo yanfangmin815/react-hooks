@@ -14,7 +14,7 @@ const ENV = environmentSwitch(NODE_ENV) // 获取环境
 
 export const reqMockDataGood = (type) => {
     return ajax({
-        url: `${request.FETCH_MOCK_DATA_GOODS}`,
+        url: `v2${request.FETCH_MOCK_DATA_GOODS}`,
         data: {},
         type: 'GET',
         baseURL: domains[ENV].baseUrl

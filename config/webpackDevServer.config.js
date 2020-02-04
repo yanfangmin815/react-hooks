@@ -14,6 +14,8 @@ const host = process.env.HOST || '0.0.0.0';
 // console.log(utils.localEntry(), 'UTILS')
 // alert()
 module.exports = function(proxy, allowedHost) {
+  // console.log(proxy, 1/a0)
+
   return {
     disableHostCheck:
       !proxy || process.env.DANGEROUSLY_DISABLE_HOST_CHECK === 'true',
