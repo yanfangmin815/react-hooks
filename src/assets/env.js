@@ -5,7 +5,7 @@ const config = {
     "uisUrl": "//mtest.picclife.cn/uis/"
   },
   development: {
-    "baseUrl": "//localhost:3001/",
+    "baseUrl": "",
     "uisUrl": "//mdev.picclife.cn/uis/"
   },
   integrate: {

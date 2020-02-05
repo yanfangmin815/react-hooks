@@ -14,6 +14,8 @@ const host = process.env.HOST || '0.0.0.0';
 // console.log(utils.localEntry(), 'UTILS')
 // alert()
 module.exports = function(proxy, allowedHost) {
+  // console.log(proxy, 1/a0)
+
   return {
     disableHostCheck:
       !proxy || process.env.DANGEROUSLY_DISABLE_HOST_CHECK === 'true',
@@ -39,7 +41,13 @@ module.exports = function(proxy, allowedHost) {
       // rewrites: utils.localEntry()
     },
     public: allowedHost,
-    proxy,
+    proxy: {
+      "/v/**": {
+        target: "http://www.cnblogs.com/", // 必须可用的URL 相应的baseURL也要为''
+        secure: false,
+        changeOrigin: true
+      }
+    },
     before(app) {
       // This lets us open files from the runtime error overlay.
       app.use(errorOverlayMiddleware());
