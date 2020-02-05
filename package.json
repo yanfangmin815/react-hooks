@@ -3,10 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "node scripts/start.js",
-    "build": "node scripts/build.js",
-    "test": "node scripts/test.js",
-    "integrate": "node scripts/integrate.js",
+    "start": "node scripts/start.js development",
+    "build": "node scripts/build.js production",
+    "test": "node scripts/build.js test",
+    "integrate": "node scripts/build.js integrate",
     "mock": "node mock/start.js",
     "mockdev": "npm run mock & npm start"
   },
