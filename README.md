@@ -6,56 +6,54 @@
 > 服务器配置文件
 ```js
 // 修改此属性，可以配置不同的代理
-proxyTable: {
-  '/legacy': {
-    target: 'https://cntaiping-dev.zaouter.com/api/',
-
-    changeOrigin: true,
-    pathRewrite: {
-      '^/legacy': ''
-    }
-  },
-},
+proxy: {
+  '/v/**': {
+    target: 'http://www.cnblogs.com/',  # `必须可用的URL 相应的baseURL也要为`
+    secure: false,
+    changeOrigin: true
+  }
+}
 ```
 ---
 ## 三、src
 ### api
-> 接口存放文件夹，所有的接口都存放在这里
+> 接口存放文件夹，所有的接口都存放在这里，里面分入口进行存放
 
-1. config.js是配置文件，之后可以做优化；
-2. 接口分模块管理，比如：account 都是账户信息相关的接口；center都是用户中心相关接口等等...可以自己到时候规划
+1. file.js是配置文件，之后可以做优化；
+2. 接口分模块管理
 
 ### assets
-> 图片资源存放文件夹，凡是打包进代码的图片资源都放在这里，需要外链的图片路径放到static文件夹里面，稍后会介绍
+> 图片资源存放文件夹，凡是打包进代码的图片资源都放在这里，需要外链的图片路径放到static文件夹里面
 
 ### channels
 > 频道分组。根据项目模块拆分成了不同频道
-1. 入口文件是App.vue
-2. index文件夹表示主系统
-3. 当项目需要使用多页面呃时候，可添加同级文件夹
-4. 每个模块下面除了页面路由，还放一些只在当前频道被使用的组件、mixin等文件；以index文件夹为例，下面分components（组件）、mixin（混合）、pages(页面)、router(路由配置)
-5. 路由模块和vuex模块管理: 如下
+1. interceptor：全局请求拦截文件
+2. invoker：初始化域名为axios对象
+3. utils：工具文件
 ```js
-import initGuards from '@/utils/guards'
-import store from '@/store/indexStore'
-const router = new Router({
-  mode: 'history',
-  base: '/index',
-  routes: [
-    ......
-  ],
-}
-initGuards(store, router, 'index', true)
+import { run } from 'concent';
+import { price, $$global } from '@/model';
+import { concentWebDevToolMiddleware } from 'concent-middleware-web-devtool';
+
+console.log('****** runConcent ******');
+
+run({
+  $$global,
+  price
+},{
+  middlewares:[
+    concentWebDevToolMiddleware,
+    (ctx, next)=>{
+      next();
+    }
+  ]
+});
 ```
 
 ### components
 > 所有模块都可能需要的组件放在这里
-1. common ----这里面只有一个header文件需要注意，稍后会介绍
-2. Form--------表单文件  图形验证码，条款选择，输入框，密码，获取短信 等常用表单元素均在这里
-3. PDFLink-----PDF组件，凡是要打开pdf的地方使用这个组件
-4. Popup ------一些自定义的弹窗组件放在这里，比如：微信分享提示，客服电话等
-5. Upload -----上传图片组件，常规的上传图片组件
-
+1. router-guard：全局路由守卫
+2. with-router：withRouter功能组件
 ### constants
 > 常量存放组件，一些常量存放在这里。比如考试题、分享图片路径、当前项目绝对路径等
 1. index 文件夹当中的 ROOT_URI 是比较常用的一个，表示当前项目的地址
