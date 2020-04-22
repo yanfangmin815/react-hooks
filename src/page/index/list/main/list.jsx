@@ -37,7 +37,7 @@ class List extends React.Component {
     }
 
     $$setup(ctx) {
-        console.log(ctx, 'CTX')
+        console.log([1,2] + 1, 'CTX')
         this.init();
       }
 
