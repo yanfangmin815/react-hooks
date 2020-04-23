@@ -24,7 +24,10 @@ class List extends React.Component {
                   name: '文言文',
                   value: 'cl-CN'
                 }
-              ] 
+              ],
+              obj: {
+                  a: 1
+              }
         }
     }
 
@@ -66,7 +69,8 @@ class List extends React.Component {
             lang, SUPPOER_LOCALES
         } = this.state
   
-        console.log('%c@@@ List-render', 'color:blue;border:1px solid blue');
+        console.log(this?.state?.obj, '??????????????????')
+        // console.log('%c@@@ List-render', 'color:blue;border:1px solid blue');
         return(
             <div className='app-container'>
                 <Content 

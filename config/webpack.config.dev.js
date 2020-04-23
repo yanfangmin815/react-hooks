@@ -27,6 +27,7 @@ const mode = (NODE_ENV === 'development' ? NODE_ENV : 'production');
 function resolve(dir) {
   return path.join(__dirname, '..', dir)
 }
+
 // console.log('coming into...');
 module.exports = merge(baseConfig, {
   mode, // webpack4

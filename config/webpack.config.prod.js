@@ -42,7 +42,7 @@ const env = getClientEnvironment(publicUrl);
 const { NODE_ENV } = process.env
 const mode = (NODE_ENV === 'development' ? NODE_ENV : 'production');
 // 调试项目启动添加错误
-// console.log(env, 'env')
+// console.log(env.raw, 'env')
 // 1/a0
 // 调试项目启动添加错误
 
